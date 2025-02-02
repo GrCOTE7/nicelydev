@@ -19,9 +19,9 @@
 
 <body>
   <?php
-  include_once 'web/content.php';
+  include_once './content.php';
   ?>
-  <script src="./web/assets/js/main.js"></script>
+  <script src="./public/assets/js/main.js"></script>
 </body>
 
 </html>
