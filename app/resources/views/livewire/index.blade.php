@@ -29,6 +29,7 @@ new class extends Component
         {!! $shop->home !!}
     </x-card>
     <br>
+    <p class="text-2xl text-red-500 font-bold">Oki</p>
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         @foreach ($products as $product)
             <x-card
