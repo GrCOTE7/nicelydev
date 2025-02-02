@@ -1,27 +1,17 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PHP in Docker</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/web/assets/favicon.ico" />
-  <link rel="icon" type="image/gif" sizes="32x32" href="/web/assets/animated_favicon.gif" />
-  <style>
-  body {
-    font-family: arial, 'Roboto', sans-serif;
-    color: maroon;
-    font-size: 1.2em;
-    margin: 5px 20px;
-  }
-  </style>
-</head>
+use Illuminate\Http\Request;
 
-<body>
-  <?php
-  include_once './content.php';
-  ?>
-  <script src="./public/assets/js/main.js"></script>
-</body>
+define('LARAVEL_START', microtime(true));
 
-</html>
+// Determine if the application is in maintenance mode...
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+    require $maintenance;
+}
+
+// Register the Composer autoloader...
+require __DIR__.'/../vendor/autoload.php';
+
+// Bootstrap Laravel and handle the request...
+(require_once __DIR__.'/../bootstrap/app.php')
+    ->handleRequest(Request::capture());
