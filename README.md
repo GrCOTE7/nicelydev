@@ -25,6 +25,10 @@
 
 ## Résultats:
 
+* Exécution:
+
+  * ``docker compose up``	
+
 * [Web](http://localhost:8000)
 * [PMA](http://localhost:8080)
   * root / password

@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PHP in Docker</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/web/assets/favicon.ico" />
+  <link rel="icon" type="image/gif" sizes="32x32" href="/web/assets/animated_favicon.gif" />
   <style>
   body {
     font-family: arial, 'Roboto', sans-serif;
@@ -13,13 +15,13 @@
     margin: 5px 20px;
   }
   </style>
-  <script src="http://localhost:3000/main.js"></script>
 </head>
 
 <body>
   <?php
   include_once 'web/content.php';
   ?>
+  <script src="./web/assets/js/main.js"></script>
 </body>
 
 </html>
