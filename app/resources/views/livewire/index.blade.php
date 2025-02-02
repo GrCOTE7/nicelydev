@@ -3,8 +3,7 @@
 use Livewire\Volt\Component;
 use App\Models\Product;
 
-new class extends Component
-{
+new class extends Component {
     public $group;
 
     public function with(): array
@@ -13,19 +12,13 @@ new class extends Component
             'products' => Product::whereActive(true)->get(),
         ];
     }
-
 }; ?>
 
 <div class="container mx-auto">
     @if (session('registered'))
-        <x-alert
-            title="{!! session('registered') !!}"
-            icon="s-rocket-launch"
-            class="mb-4 alert-info"
-            dismissible
-        />
+        <x-alert title="{!! session('registered') !!}" icon="s-rocket-launch" class="mb-4 alert-info" dismissible />
     @endif
-    <x-card class="w-full shadow-md shadow-gray-500" shadow separator >
+    <x-card class="w-full shadow-md shadow-gray-500" shadow separator>
         {!! $shop->home !!}
     </x-card>
     <br>
@@ -34,25 +27,27 @@ new class extends Component
         @foreach ($products as $product)
             <x-card
                 class="shadow-md transition duration-500 ease-in-out shadow-gray-500 hover:shadow-xl hover:shadow-gray-500"
-                title="{{ number_format($product->price, 2, ',', ' ') . ' € TTC' }}" >
+                title="{{ number_format($product->price, 2, ',', ' ') . ' € TTC' }}">
                 {!! $product->name !!}
-                @unless($product->quantity)
+                @unless ($product->quantity)
                     <br><span class="text-red-500">@lang('Product out of stock')</span>
                 @endunless
                 @if ($product->image)
                     <x-slot:figure>
-                        @if($product->quantity)
+                        @if ($product->quantity)
                             <a href="{{ route('products.show', $product) }}">
                         @endif
-                            <img src="{{ asset('storage/photos/' . $product->image) }}" alt="{!! $product->name !!}" />
-                        @if($product->quantity) </a> @endif
+                        <img src="{{ asset('storage/photos/' . $product->image) }}" alt="{!! $product->name !!}" />
+                        @if ($product->quantity)
+                            </a>
+                        @endif
                     </x-slot:figure>
                 @endif
             </x-card>
         @endforeach
     </div>
     <br>
-    <x-card class="w-full shadow-md shadow-gray-500" shadow separator >
+    <x-card class="w-full shadow-md shadow-gray-500" shadow separator>
         <x-accordion wire:model="group" class="shadow-md shadow-gray-500">
             <x-collapse name="group1">
                 <x-slot:heading>{{ __('General informations') }}</x-slot:heading>
